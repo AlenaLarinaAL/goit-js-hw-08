@@ -5,6 +5,8 @@ const email = formEl.elements.email;
 const message = formEl.elements.message;
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
+
+
 function setData() {
     const setItems = { email: email.value, message: message.value };
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(setItems));
@@ -23,15 +25,19 @@ function checkData() {
 
 };
 
-const onSubmit = throttle(saveData, 500);
-formEl.addEventListener('submit', onSubmit);
+document.addEventListener('DOMContentLoaded', checkData);
 
-function saveData(event) {
+const throttleOnSubmit = throttle(onSubmit, 500);
+formEl.addEventListener('submit', throttleOnSubmit);
+
+function onSubmit(event) {
     event.preventDefault();
+    localStorage.clear();
     const setItems = { email: email.value, message: message.value };
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(setItems));
     console.log(setItems);
     email.value = '';
     message.value = '';
-    localStorage.clear();
+
 }
+
