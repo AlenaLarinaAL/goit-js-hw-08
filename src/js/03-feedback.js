@@ -34,10 +34,9 @@ function onSubmit(event) {
     event.preventDefault();
     localStorage.clear();
     const setItems = { email: email.value, message: message.value };
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(setItems));
-    console.log(setItems);
+    // localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(setItems));
     email.value = '';
     message.value = '';
-
+    console.log(setItems);
 }
 
