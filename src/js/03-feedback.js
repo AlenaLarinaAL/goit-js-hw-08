@@ -18,8 +18,8 @@ function checkData() {
     const elements = localStorage.getItem(LOCALSTORAGE_KEY);
     if (elements) {
         const { email, message } = JSON.parse(elements);
-        email.value = email;
-        message.value = message;
+        emailEl.value = email;
+        messageEl.value = message;
         console.log({ email, message });
     }
 
